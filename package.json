@@ -10,8 +10,8 @@
   "author": "Bruno Franco Puzoni",
   "license": "ISC",
   "dependencies": {
-    "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "nunjucks": "^3.2.2",
     "sqlite3": "^5.0.0"
   },
   "devDependencies": {
