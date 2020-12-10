@@ -1,11 +1,16 @@
 const express = require('express');
-const server = express();
+const nunjucks = require('nunjucks');
 const db = require("./db");
 
-server.set("view engine", "ejs");
+const server = express();
+
 server.use(express.static("public"));
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+nunjucks.configure('views', {
+    express: server,
+    noCache: true
+})
 
 
 
@@ -41,11 +46,19 @@ server.get('/teste', (req, res) => {
 
 });
 
-server.get('/', function (req, res) {
-    res.render('index');
+server.get('/', (req, res) => {
+    let sql = 'SELECT * FROM tarefas';
+
+    db.all(sql,(err,rows) =>{
+        if (err){
+            res.status(400).json({"erro": err.message});
+            return;
+        }
+        return res.render('index.html', {tarefas: rows});
+    })
 });
 
-server.post('/', function (req, res) {
+server.post('/', (req, res) => {
 
     let erro = [];
     if (!req.body.tarefa) {
@@ -53,6 +66,7 @@ server.post('/', function (req, res) {
     }
     if (erro.length) {
         res.status(400).json({ "erro": erro.values });
+        console.log(erro);
         return;
     }
 
@@ -75,10 +89,39 @@ server.post('/', function (req, res) {
 
 });
 
+server.patch('/update/:id', (req, res) => {
+
+    let erro = [];
+    if (!req.body.updtarefa) {
+        erro.push("Nenhuma tarefa descrita");
+    }
+    if (erro.length) {
+        res.status(400).json({ "erro": erro.values });
+        console.log(erro);
+        return;
+    }
+
+    let data = { 
+        descricao: req.body.updtarefa,
+        id: req.params.id
+    };
+
+    let sql = 'UPDATE tarefas SET descricao = ? WHERE id = ?';
+    let params = [data.descricao, data.id];
+
+    db.run(sql, params, (err) =>{
+        if (err) {
+            res.status(400).json({ "erro": err.message });
+            return;
+        }
+        return res.redirect("/");
+    })
+})
 
 
-server.use(function (req, res) {
-    res.status(404);
+
+server.get('*', (req, res) => {
+    res.status(404).send('Error 404: File not found')
 });
 
 server.listen(3001);
