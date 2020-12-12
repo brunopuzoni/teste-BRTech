@@ -124,4 +124,4 @@ server.get('*', (req, res) => {
     res.status(404).send('Error 404: File not found')
 });
 
-server.listen(3001);
+server.listen(3001, () => console.log("Servidor rodando na porta 3001"));
