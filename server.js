@@ -1,16 +1,26 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
+const methodOverride = require('method-override');
 const db = require('./db');
+
 
 const server = express();
 
+const getter = (req, res) => {
+    if (req.body && typeof req.body === 'object' && 'method' in req.body){
+        const method = req.body.method;
+        delete req.body.method;
+        return method;
+    }
+}
 server.use(express.static('public'));
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
+server.use(methodOverride(getter));
 nunjucks.configure('views', {
     express: server,
     noCache: true
-})
+});
 
 
 
@@ -58,7 +68,7 @@ server.get('/', (req, res) => {
     })
 });
 
-server.post('/', (req, res) => {
+server.post('/create', (req, res) => {
 
     let erro = [];
     if (!req.body.tarefa) {
@@ -85,6 +95,7 @@ server.post('/', (req, res) => {
 });
 
 server.patch('/update/:id', (req, res) => {
+    console.log(req.body, req.method, req.params)
 
     let erro = [];
     if (!req.body.updtarefa) {
@@ -112,7 +123,9 @@ server.patch('/update/:id', (req, res) => {
     })
 })
 
+server.delete('/delete/:id', (req, res) => {
 
+})
 
 server.get('*', (req, res) => {
     res.status(404).send('Error 404: File not found')
