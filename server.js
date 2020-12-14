@@ -2,12 +2,13 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const methodOverride = require('method-override');
 const db = require('./db');
+const port = 3001;
 
 
 const server = express();
 
 var getter = (req, res) => {
-    if (req.body && typeof req.body === 'object' && 'method' in req.body){
+    if (req.body && typeof req.body === 'object' && 'method' in req.body) {
         const method = req.body.method;
         delete req.body.method;
         return method;
@@ -59,12 +60,12 @@ server.get('/teste', (req, res) => {
 server.get('/', (req, res) => {
     let sql = 'SELECT * FROM tarefas';
 
-    db.all(sql,(err,rows) =>{
-        if (err){
-            res.status(400).json({"erro": err.message});
+    db.all(sql, (err, rows) => {
+        if (err) {
+            res.status(400).json({ "erro": err.message });
             return;
         }
-        return res.render('index.html', {tarefas: rows});
+        return res.render('index.html', { tarefas: rows });
     })
 });
 
@@ -95,7 +96,6 @@ server.post('/create', (req, res) => {
 });
 
 server.patch('/update/:id', (req, res) => {
-    console.log(req.body, req.method, req.params)
 
     let erro = [];
     if (!req.body.updtarefa) {
@@ -107,7 +107,7 @@ server.patch('/update/:id', (req, res) => {
         return;
     }
 
-    let data = { 
+    let data = {
         descricao: req.body.updtarefa,
         id: req.body.updid
     };
@@ -115,7 +115,7 @@ server.patch('/update/:id', (req, res) => {
     let sql = 'UPDATE tarefas SET descricao = ? WHERE id = ?';
     let params = [data.descricao, data.id];
 
-    db.run(sql, params, (err) =>{
+    db.run(sql, params, (err) => {
         if (err) {
             return res.status(400).json({ "erro": err.message });
         }
@@ -124,6 +124,15 @@ server.patch('/update/:id', (req, res) => {
 })
 
 server.delete('/delete/:id', (req, res) => {
+    let sql = 'DELETE FROM tarefas WHERE id = ?';
+
+    db.run(sql, req.body.delid, (err) => {
+        if (err) {
+            return res.status(400).json({ "erro": err.message });
+        }
+        return res.redirect("/");
+
+    })
 
 })
 
@@ -131,4 +140,4 @@ server.get('*', (req, res) => {
     res.status(404).send('Error 404: File not found')
 });
 
-server.listen(3001, () => console.log("Servidor rodando na porta 3001"));
+server.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
