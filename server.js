@@ -1,11 +1,11 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
-const db = require("./db");
+const db = require('./db');
 
 const server = express();
 
-server.use(express.static("public"));
-server.use(express.urlencoded({ extended: false }));
+server.use(express.static('public'));
+server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 nunjucks.configure('views', {
     express: server,
@@ -70,13 +70,8 @@ server.post('/', (req, res) => {
         return;
     }
 
-    let data = {
-        descricao: req.body.tarefa,
-        status: 0
-    }
-
-    let sql = 'INSERT INTO tarefas(descricao, status) VALUES(?,?)';
-    let params = [data.descricao, data.status];
+    let sql = 'INSERT INTO tarefas(descricao) VALUES(?)';
+    let params = req.body.tarefa;
 
     db.run(sql, params, (err) => {
         if (err) {
@@ -103,7 +98,7 @@ server.patch('/update/:id', (req, res) => {
 
     let data = { 
         descricao: req.body.updtarefa,
-        id: req.params.id
+        id: req.body.updid
     };
 
     let sql = 'UPDATE tarefas SET descricao = ? WHERE id = ?';
@@ -111,8 +106,7 @@ server.patch('/update/:id', (req, res) => {
 
     db.run(sql, params, (err) =>{
         if (err) {
-            res.status(400).json({ "erro": err.message });
-            return;
+            return res.status(400).json({ "erro": err.message });
         }
         return res.redirect("/");
     })
