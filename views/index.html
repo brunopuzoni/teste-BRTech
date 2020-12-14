@@ -105,7 +105,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="/" method="POST">
+                    <form action="/create" method="POST">
                         <input class="form-control" type="text" id="tarefa" name="tarefa" placeholder="Descrição"> <br>
                         <button class="btn btn-success">Adicionar</button>
                     </form>
@@ -127,10 +127,11 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="/update/{{tarefa.id}}" method="POST" id="form-update">
+                    <form action="/update/{{tarefa.id}}?_method=PATCH" method="POST" id="form-update">
                         <input class="form-control" type="text" id="updtarefa" name="updtarefa" placeholder="Alterar descrição"> <br>
                         <input class="form-control" type="hidden" id="updid" name="updid">
-                        <input type="submit" class="btn btn-success" value="Alterar" onclick="updateForm()">
+                        <input class="form-control" type="hidden" id="method" name="method" value="patch">
+                        <input type="submit" class="btn btn-success" value="Alterar">
                     </form>
                 </div>
 
