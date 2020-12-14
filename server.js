@@ -6,7 +6,7 @@ const db = require('./db');
 
 const server = express();
 
-const getter = (req, res) => {
+var getter = (req, res) => {
     if (req.body && typeof req.body === 'object' && 'method' in req.body){
         const method = req.body.method;
         delete req.body.method;
