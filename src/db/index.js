@@ -15,12 +15,11 @@ module.exports = {
     try{
       const { tarefa } = req.body;
       await db("tarefas").insert({ descricao: tarefa });
-    
       return res.redirect("/");
 
     } catch(error) {
         next(error)
-    }
+    };
 
   },
 
@@ -34,7 +33,7 @@ module.exports = {
 
     } catch(error) {
         next(error);
-    }
+    };
  
   },
 
@@ -45,8 +44,8 @@ module.exports = {
 
     } catch(error) {
         next(error);
-    }
+    };
     
   }
 
-}
+};
