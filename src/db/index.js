@@ -20,7 +20,6 @@ module.exports = {
     } catch(error) {
         next(error)
     };
-
   },
 
   async update(req, res, next){
@@ -34,7 +33,6 @@ module.exports = {
     } catch(error) {
         next(error);
     };
- 
   },
 
   async remove(req, res, next){
@@ -44,8 +42,7 @@ module.exports = {
 
     } catch(error) {
         next(error);
-    };
-    
+    };   
   }
 
 };
