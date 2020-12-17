@@ -28,7 +28,9 @@
                         <div class="ps-content">
                             <ul class=" list-group list-group-flush">
 
-                                {% for tarefa in tarefas %}
+                                <!--Loop 'for' do nunjucks para exibir as tarefas-->
+
+                                {% for tarefa in tarefas %} 
 
                                 <li class="list-group-item">
                                     <div class="todo-indicator bg-warning"></div>
@@ -67,6 +69,8 @@
         </div>
     </div>
 
+    <!-- Modal Insert -->
+
     <div class="modal fade" id="modal-insert" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -88,6 +92,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Update -->
 
     <div class="modal fade" id="modal-update" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -113,6 +119,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Delete -->
 
     <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
