@@ -1,6 +1,6 @@
 <h1> Lista de Tarefas + CRUD </h1>
 
-O projeto consiste em uma lista de tarefas (to-do list), abordando todas as operações de um CRUD (Create, Read, Update, Delete) através de uma API REST, podendo inserir novas tarefas, atualizar as já existentes e excluir as que deseja. <br>
+O projeto consiste em uma lista de tarefas (to-do list), abordando todas as operações de um CRUD (Create, Read, Update, Delete) através de uma API REST, podendo inserir novas tarefas, atualizar as já existentes e excluir as que desejar. <br>
 O aplicativo foi construído utilizando o framework Bootstrap (v4.5.3), além de outros pacotes e tecnologias que ainda serão abordados. 
 
  <h2> :wrench: Dependências </h2>
