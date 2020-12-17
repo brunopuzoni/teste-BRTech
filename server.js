@@ -6,6 +6,9 @@ const db = require("./db");
 const port = 3001;
 const server = express();
 
+//Custom Getter para o methodOverride
+//Possibilita o funcionamento das rotas
+//PATCH e DELETE
 const getter = (req, res) => {
   if (req.body && typeof req.body === "object" && "method" in req.body) {
     const { method } = req.body;
