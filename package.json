@@ -2,15 +2,16 @@
   "name": "teste-brtech",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "author": "Bruno Franco Puzoni",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "knex": "^0.21.13",
     "method-override": "^3.0.0",
     "nunjucks": "^3.2.2",
     "sqlite3": "^5.0.0"
