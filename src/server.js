@@ -18,7 +18,7 @@ server.use(express.static("public"));
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 server.use(methodOverride(getter));
-nunjucks.configure("views", {
+nunjucks.configure("src/views", {
   express: server,
   noCache: true
 });
