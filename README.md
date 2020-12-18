@@ -31,7 +31,7 @@ O aplicativo foi construído utilizando o framework Bootstrap (v4.5.3), além de
 
 ### Deploy
 
-Via terminal: 
+#### Via terminal: 
 
 1. Clone o repositório com `git clone https://github.com/brunopuzoni/teste-BRTech.git`
 2. Acesse a pasta com `cd teste-BRTech/`
@@ -41,6 +41,8 @@ Via terminal:
 
 Neste repositório está incluído a branch `knex`, que contém uma versão diferente do mesmo projeto, porém usando o pacote knex como query builder, além de uma organização de arquivos um pouco diferente. Caso queira acessá-la:
 
+#### Via terminal:
+
 1. Troque de branch com `git switch knex`
 2. Instale as dependências novamente com `npm install`
 
@@ -48,7 +50,7 @@ Neste repositório está incluído a branch `knex`, que contém uma versão dife
 
 Para rodar a aplicação, execute o comando `npm start` pelo terminal <br>
 Por padrão, a branch `main` é acessada via navegador através do `http://localhost:3001` <br>
-Enquanto a branch `knex` é acessada através do `http://localhost:3002`
+A branch `knex` é acessada através do `http://localhost:3002`
 
 ## :exclamation: Considerações Finais
 
