@@ -40,9 +40,8 @@ server.get("/", (req, res) => {
 
 server.post("/create", (req, res) => {
   const sql = "INSERT INTO tarefas(descricao) VALUES(?)";
-  const params = req.body.tarefa;
 
-  db.run(sql, params, (err) => {
+  db.run(sql, req.body.tarefa, (err) => {
     if (err) {
       res.status(400).json({ erro: err.message });
       return;
