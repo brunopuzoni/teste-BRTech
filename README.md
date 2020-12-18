@@ -9,12 +9,13 @@ O aplicativo foi construído utilizando o framework Bootstrap (v4.5.3), além de
  * CSS 3
  * Javascript / ES6+
  * jQuery (utilizado no modal Bootstrap)
+ * SQLite
  
 ## :wrench: Dependências
 
 * [NodeJS](https://nodejs.org/)
 * [ExpressJS](https://expressjs.com/)
-* [SQLite3: ](https://www.npmjs.com/package/sqlite3) Banco de dados simples e leve, configurado através de um arquivo local.
+* [SQLite3: ](https://www.npmjs.com/package/sqlite3) Pacote para conexão com o banco de dados escolhido 
 * [Nunjucks: ](https://mozilla.github.io/nunjucks/) Template engine escolhido, utilizado para manipular os dados no front-end.
 * [Nodemon: ](https://nodemon.io/) Dependência de desenvolvimento, monitora mudanças no arquivo e reinicia automaticamente o servidor.
 * [Method-Override: ](https://www.npmjs.com/package/method-override) Adição do Express, utilizado para interceptar os métodos enviados pelos forms.
