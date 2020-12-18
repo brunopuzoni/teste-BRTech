@@ -3,7 +3,7 @@ const nunjucks = require("nunjucks");
 const methodOverride = require("method-override");
 const routes = require("./routes");
 
-const port = 3001;
+const port = 3002;
 const server = express();
 
 let getter = (req, res) => {
