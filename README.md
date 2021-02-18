@@ -53,6 +53,8 @@ Para rodar a aplicação, execute o comando `npm start` pelo terminal <br>
 Por padrão, a branch `main` é acessada via navegador através do `http://localhost:3001` <br>
 A branch `knex` é acessada através do `http://localhost:3002`
 
+Para encerrar a execução da aplicação, basta executar `Ctrl + C` no terminal utilizado.
+
 ## :exclamation: Considerações Finais
 
 Este projeto foi desenvolvido como teste para uma vaga de estágio na empresa BR Media Group. Gostaria de agradecer pela oportunidade e pela grande quantidade de conhecimento que eu adquiri para a realização do projeto. Espero ter atendido as expectativas e me coloco disponível para qualquer esclarecimento ou avaliação futura.
